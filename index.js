@@ -15,8 +15,11 @@ osPlatform = `${os.platform()} ${os.arch()}`;
 network = os.networkInterfaces();
 computerName = os.userInfo({ option: "utf8" }).username;
 
+os.platform == "linux" || os.platform == "win32"
+  ? (model = os.cpus()[0].model)
+  : (model = undefined);
+
 if (os.platform == "linux") {
-  model = os.cpus()[0].model;
   if (network.hasOwnProperty("wlp3s0")) {
     ipWireless = network.wlp3s0[0];
   } else if (network.hasOwnProperty("eth0")) {
@@ -26,7 +29,6 @@ if (os.platform == "linux") {
   ipWireless = network.eth0[0];
 } else if (os.platform == "android") {
   ipWireless = network.wlan0[0];
-  model = undefined;
 }
 
 ipLan = network.lo[0].address;
