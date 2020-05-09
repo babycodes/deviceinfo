@@ -26,7 +26,7 @@ if (os.platform == "linux") {
   ipWireless = network.eth0[0];
 } else {
   ipWireless = undefined;
-  ipWireless["mac"] = undefined;
+  ipWireless["mac"] = "undefined";
   model = undefined;
 }
 
