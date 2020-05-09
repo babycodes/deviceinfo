@@ -11,12 +11,12 @@ let userOperator,
   macAddress;
 
 userOperator = "pengguna";
-model = os.cpus()[0].model;
 osPlatform = `${os.platform()} ${os.arch()}`;
 network = os.networkInterfaces();
 computerName = os.userInfo({ option: "utf8" }).username;
 
 if (os.platform == "linux") {
+  model = os.cpus()[0].model;
   if (network.hasOwnProperty("wlp3s0")) {
     ipWireless = network.wlp3s0[0];
   } else if (network.hasOwnProperty("eth0")) {
@@ -27,6 +27,7 @@ if (os.platform == "linux") {
 } else {
   ipWireless = undefined;
   ipWireless.mac = undefined;
+  model = undefined;
 }
 
 ipLan = network.lo[0].address;
