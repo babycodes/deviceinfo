@@ -24,27 +24,23 @@ if (os.platform == "linux") {
   }
 } else if (os.platform == "win32") {
   ipWireless = network.eth0[0];
-} else {
-  ipWireless = undefined;
+} else if (os.platform == "android") {
+  ipWireless = network.wlan0[0];
   model = undefined;
 }
 
 ipLan = network.lo[0].address;
-if (os.platform != "android") {
-  if (ipWireless.hasOwnProperty("mac")) {
-    macAddress = ipWireless.mac;
-  }
-}
-
-// user_log = {
-//   computerName,
-//   osPlatform,
-//   model,
-//   ipWireless: ipWireless.address,
-//   ipLan,
-//   macAddress,
-// };
+macAddress = ipWireless.mac;
+user_log = {
+  computerName,
+  osPlatform,
+  model,
+  ipWireless: ipWireless.address,
+  ipLan,
+  macAddress,
+};
 
 console.log(user_log);
 console.log("platform : " + process.platform);
+console.log(os.cpus());
 console.log(os.networkInterfaces());
