@@ -11,7 +11,7 @@ let userOperator,
   macAddress;
 
 userOperator = "pengguna";
-model = os.cpus()[1].model;
+model = os.cpus()[0].model;
 osPlatform = `${os.platform()} ${os.arch()}`;
 network = os.networkInterfaces();
 computerName = os.userInfo({ option: "utf8" }).username;
