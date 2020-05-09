@@ -22,8 +22,11 @@ if (os.platform == "linux") {
   } else if (network.hasOwnProperty("eth0")) {
     ipWireless = network.eth0[0];
   }
-} else {
+} else if (os.platform == "win32") {
   ipWireless = network.eth0[0];
+} else {
+  ipWireless = undefined;
+  ipWireless.mac = undefined;
 }
 
 ipLan = network.lo[0].address;
