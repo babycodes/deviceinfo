@@ -1,26 +1,7 @@
 const os = require("os");
 
 let user_log = {};
-let userOperator, computerName, osPlatform, model, network, ipAddress;
-osPlatform = `${os.platform()} ${os.arch()}`;
-network = os.networkInterfaces();
-computerName = os.userInfo({ option: "utf8" }).username;
-
-model = getModel();
-ipAddress = getIp();
-
-user_log = {
-  computerName,
-  osPlatform,
-  model,
-  ipAddress: ipAddress.address,
-  macAddress: ipAddress.mac
-};
-
-console.log(user_log);
-// console.log("platform : " + process.platform);
-// console.log(os.cpus());
-// console.log(os.networkInterfaces());
+let computerName, osPlatform, model, network, ipAddress;
 
 function getIp() {
   let ipAddress;
@@ -43,5 +24,27 @@ function getIp() {
 function getModel() {
   return os.platform == "linux" || os.platform == "win32"
     ? os.cpus()[0].model
-    : "Unidentified Palform";
+    : "Unidentified Model";
 }
+
+function getDeviceInformation() {
+  osPlatform = `${os.platform()} ${os.arch()}`;
+  network = os.networkInterfaces();
+  computerName = os.userInfo({ option: "utf8" }).username;
+
+  model = getModel();
+  ipAddress = getIp();
+
+  user_log = {
+    computerName,
+    osPlatform,
+    model,
+    ipAddress: ipAddress.address,
+    macAddress: ipAddress.mac
+  };
+
+  console.log(user_log);
+}
+
+getDeviceInformation();
+console.log(os.cpus());
