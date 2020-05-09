@@ -30,7 +30,9 @@ if (os.platform == "linux") {
 }
 
 ipLan = network.lo[0].address;
-macAddress = ipWireless.mac;
+if (ipWireless.hasOwnProperty("mac")) {
+  macAddress = ipWireless.mac;
+}
 
 user_log = {
   computerName,
