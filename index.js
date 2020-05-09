@@ -36,14 +36,14 @@ if (os.platform != "android") {
   }
 }
 
-user_log = {
-  computerName,
-  osPlatform,
-  model,
-  ipWireless: ipWireless.address,
-  ipLan,
-  macAddress,
-};
+// user_log = {
+//   computerName,
+//   osPlatform,
+//   model,
+//   ipWireless: ipWireless.address,
+//   ipLan,
+//   macAddress,
+// };
 
 console.log(user_log);
 console.log("platform : " + process.platform);
