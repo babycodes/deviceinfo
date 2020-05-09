@@ -3,6 +3,7 @@ const os = require("os");
 let user_log = {};
 let computerName, osPlatform, model, network, ipAddress;
 
+// get device ip addres
 function getIp() {
   let ipAddress;
   if (os.platform == "linux") {
@@ -21,12 +22,14 @@ function getIp() {
   return ipAddress;
 }
 
+// get device model
 function getModel() {
   return os.platform == "linux" || os.platform == "win32"
     ? os.cpus()[0].model
     : "Unidentified Model";
 }
 
+// get device information
 function getDeviceInformation() {
   osPlatform = `${os.platform()} ${os.arch()}`;
   network = os.networkInterfaces();
@@ -46,5 +49,5 @@ function getDeviceInformation() {
   console.log(user_log);
 }
 
+// execute get device information
 getDeviceInformation();
-console.log(os.cpus());
